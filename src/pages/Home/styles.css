@@ -3,34 +3,43 @@
     --white: #fff;
 }
 
-header {
-    background-color: var(--white);
-    box-shadow: 1px 1px 5px #ced5da;
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-    padding: 15px 60px;
+body {
+    font: 1rem 'Roboto-Regular';
 }
 
-.menu ul {
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.menu ul li {
-    padding-left: 20px;
+header {
+    background-color: var(--white);
+    box-shadow: 1px 1px 5px #ced5da;
+
+    align-items: center;
+    display: flex;
+    padding: 15px 60px;
+}
+
+.top-container {
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: 'OratorStd';
 }
 
 .searchs__form {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
 }
 
 .searchs__input {
-    height: 35px;
+    padding: 5px;
     border: 0;
     border-bottom: 1px solid #ccc;
     outline: 0;
@@ -39,20 +48,22 @@ header {
 .searchs__button {
     border: 0;
     background-color: transparent;
-
 }
 
 .searchs__button svg {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
+}
+
+.content {
 }
 
 table {
     border-collapse: collapse;
-  }
+}
 
-  td, th {
+td, th {
     border: 1px solid #999;
     padding: 0.5rem;
     text-align: left;
-  }
+}

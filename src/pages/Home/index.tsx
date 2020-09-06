@@ -34,10 +34,12 @@ function Home() {
             }
             catch (error) {
                 alert('Nome de usuário inexistente!');
+                setRepos([]);
             }
         }
         else {
-            alert('Necessário digitar um nome de usuário');
+            //alert('Necessário digitar um nome de usuário');
+            setRepos([]);
         }
 
 
@@ -46,18 +48,8 @@ function Home() {
     return (
         <div id="wrapper">
             <header>
-                <div className="logo">GitHub Viewer</div>
-                <nav className="menu">
-                    <ul>
-                        <li>oi</li>
-                        <li>oi5</li>
-                    </ul>
-                </nav>
-            </header>
-
-            <main>
-
-                <div className="searchs">
+                <div className="container top-container">
+                    <div className="logo">GitHub Viewer</div>
                     <form className="searchs__form" onSubmit={pesquisarGitHub}>
                         <fieldset>
                             <input type="text" id="search" name="search" className="searchs__input" value={search}
@@ -75,33 +67,39 @@ function Home() {
                         </button>
                     </form>
                 </div>
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>nome</th>
-                                <th>criado em</th>
-                                <th>descrição</th>
-                                <th>linguagem</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                repos.map((repo: Repos) => {
-                                    return(
-                                        <tr key={repo.id}>
-                                            <td>{repo.id}</td>
-                                            <td>{repo.name}</td>
-                                            <td>{format(new Date(repo.created_at), 'dd/MM/yyyy')}</td>
-                                            <th>{repo.description}</th>
-                                            <td>{repo.language}</td>
-                                        </tr>
-                                    );
-                                })
-                            }
-                        </tbody>
-                    </table>
+
+            </header>
+
+            <main>
+                <div className="content">
+                    <div className="container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>nome</th>
+                                    <th>criado em</th>
+                                    <th>descrição</th>
+                                    <th>linguagem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    repos.map((repo: Repos) => {
+                                        return(
+                                            <tr key={repo.id}>
+                                                <td>{repo.id}</td>
+                                                <td>{repo.name}</td>
+                                                <td>{format(new Date(repo.created_at), 'dd/MM/yyyy')}</td>
+                                                <th>{repo.description}</th>
+                                                <td>{repo.language}</td>
+                                            </tr>
+                                        );
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </main>
             <footer>

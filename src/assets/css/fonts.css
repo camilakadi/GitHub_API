@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'OratorStd';
+    src: url('../fonts/orator/OratorStd.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'OratorStd-Slanted';
+    src: url('../fonts/orator/OratorStd-Slanted.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Roboto-Black';
+    font-weight: 900;
+    font-style: normal;
+    src: url('../fonts/roboto/Roboto-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-BlackItalic';
+    font-weight: 900;
+    font-style: italic;
+    src: url('../fonts/roboto/Roboto-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    font-weight: 700;
+    font-style: normal;
+    src: url('../fonts/roboto/Roboto-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-BoldItalic';
+    font-weight: 700;
+    font-style: italic;
+    src: url('../fonts/roboto/Roboto-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-Medium';
+    font-weight: 500;
+    font-style: normal;
+    src: url('../fonts/roboto/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-MediumItalic';
+    font-weight: 500;
+    font-style: italic;
+    src: url('../fonts/roboto/Roboto-MediumItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    font-weight: 400;
+    font-style: normal;
+    src: url('../fonts/roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-RegularItalic';
+    font-weight: 400;
+    font-style: italic;
+    src: url('../fonts/roboto/Roboto-RegularItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-Light';
+    font-weight: 300;
+    font-style: normal;
+    src: url('../fonts/roboto/Roboto-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-LightItalic';
+    font-weight: 300;
+    font-style: italic;
+    src: url('../fonts/roboto/Roboto-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-Thin';
+    font-weight: 100;
+    font-style: normal;
+    src: url('../fonts/roboto/Roboto-Thin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto-ThinItalic';
+    font-weight: 100;
+    font-style: italic;
+    src: url('../fonts/roboto/Roboto-ThinItalic.ttf') format('truetype');
+}
