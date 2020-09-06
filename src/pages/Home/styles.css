@@ -1,35 +1,42 @@
 :root {
     --dark-blue: #003959;
     --white: #fff;
+    --light-pink: #fde3d7
 }
 
 body {
     font: 1rem 'Roboto-Regular';
 }
 
+.wrapper {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 header {
-    background-color: var(--white);
+    background-color: var(--light-pink);
     box-shadow: 1px 1px 5px #ced5da;
-
-    align-items: center;
-    display: flex;
-    padding: 15px 60px;
 }
 
 .top-container {
     justify-content: space-between;
+    align-items: center;
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .logo {
     font-family: 'OratorStd';
+    color: var(--dark-blue);
 }
 
 .searchs__form {
@@ -41,8 +48,18 @@ header {
 .searchs__input {
     padding: 5px;
     border: 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2px solid var(--dark-blue);
     outline: 0;
+    background-color: transparent;
+}
+
+.searchs__input:focus {
+    border-bottom: 2px solid #ee7656;
+}
+
+.searchs__input::placeholder {
+    color: var(--dark-blue);
+    opacity: 1;
 }
 
 .searchs__button {
@@ -53,17 +70,80 @@ header {
 .searchs__button svg {
     width: 20px;
     height: 20px;
+    stroke: none;
+    fill: var(--dark-blue);
+    background-color: transparent;
+    transition: 0.3s ease all;
 }
 
-.content {
+.searchs__button svg:hover {
+    fill: #ee7656;
+    transition: 0.3s ease all;
+}
+
+main {
+    align-items: stretch;
+    flex: 1 1 auto;
+}
+
+.scrollable-table {
+    overflow-x: auto;
 }
 
 table {
     border-collapse: collapse;
+    width: 100%;
+    margin: 35px 0;
+    min-width: 900px;
+}
+
+thead th {
+    font-family: 'OratorStd';
+}
+
+thead th:nth-child(1), thead th:nth-child(5) {
+    width: 10%
+}
+
+thead th:nth-child(2) {
+    width: 20%;
+}
+
+thead th:nth-child(3) {
+    width: 15%;
 }
 
 td, th {
-    border: 1px solid #999;
+    border-bottom: 1px solid #ced5da;
     padding: 0.5rem;
     text-align: left;
+}
+
+footer {
+    background-color: var(--dark-blue);
+}
+
+footer .container {
+    text-align: center;
+    min-height: 40px;
+    line-height: 40px;
+    color: var(--white)
+}
+
+@media (max-width: 600px) {
+    .top-container {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .searchs__form {
+        width: 100%;
+    }
+
+    .searchs__input {
+        width: inherit;
+    }
 }
