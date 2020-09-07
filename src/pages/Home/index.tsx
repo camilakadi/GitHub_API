@@ -1,9 +1,18 @@
 import React, { useState, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { format } from "date-fns";
-import { Button, TextField } from '@material-ui/core';
+import { TextField, IconButton, Container, Grid } from '@material-ui/core';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Search from '@material-ui/icons/Search';
 
 import './styles.css';
 
@@ -11,10 +20,7 @@ const theme = createMuiTheme({
     palette: {
         primary: {
             main: "#003959",
-        },
-        // secondary: {
-        //     main: "",
-        // },
+        }
     },
 });
 
@@ -49,68 +55,81 @@ function Home() {
         }
     }
 
+    function construirLista() {
+        if (repos.length) {
+            return repos.map((repo: Repos) => {
+                return(
+                    <TableRow key={repo.id}>
+                        <TableCell component="th" scope="row">{repo.id}</TableCell>
+                        <TableCell>{repo.name}</TableCell>
+                        <TableCell>{format(new Date(repo.created_at), 'dd/MM/yyyy')}</TableCell>
+                        <TableCell>{repo.description}</TableCell>
+                        <TableCell>{repo.language}</TableCell>
+                    </TableRow>
+                );
+            })
+        }
+        else {
+            return (
+                <TableRow>
+                    <TableCell colSpan={5}>Não existem resultados</TableCell>
+                </TableRow>
+            );
+        }
+    }
+
     return (
         <div className="wrapper">
             <ThemeProvider theme={theme}>
-            <header>
-                <div className="container top-container">
-                    <div className="logo">GitHub Viewer</div>
-                    <form className="searchs__form" onSubmit={pesquisarGitHub}>
-                        <TextField type="text" id="search" name="search" className="searchs__input" value={search}
-                            onChange={(e) => {setSearch(e.target.value)}} label="Pesquisar Repositório"
-                        />
-                        <button className="searchs__button">
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-1 0 136 136.21852">
-                                <g id="surface1">
-                                    <path d="M 93.148438 80.832031 C 109.5 57.742188 104.03125 25.769531 80.941406 9.421875 C 57.851562 -6.925781 25.878906 -1.460938 9.53125 21.632812 C -6.816406 44.722656 -1.351562 76.691406 21.742188 93.039062 C 38.222656 104.707031 60.011719 105.605469 77.394531 95.339844 L 115.164062 132.882812 C 119.242188 137.175781 126.027344 137.347656 130.320312 133.269531 C 134.613281 129.195312 134.785156 122.410156 130.710938 118.117188 C 130.582031 117.980469 130.457031 117.855469 130.320312 117.726562 Z M 51.308594 84.332031 C 33.0625 84.335938 18.269531 69.554688 18.257812 51.308594 C 18.253906 33.0625 33.035156 18.269531 51.285156 18.261719 C 69.507812 18.253906 84.292969 33.011719 84.328125 51.234375 C 84.359375 69.484375 69.585938 84.300781 51.332031 84.332031 C 51.324219 84.332031 51.320312 84.332031 51.308594 84.332031 Z M 51.308594 84.332031 "
-
+                <header>
+                    <Container className="container top-container">
+                        <Grid container spacing={2} direction="row" justify="space-between" alignItems="center">
+                            <Grid item xs={12} sm={6} className="logo">
+                                GitHub Viewer
+                            </Grid>
+                            <Grid item xs={12} sm={6} container direction="row" justify="flex-end" alignItems="center">
+                                <form className="searchs__form" onSubmit={pesquisarGitHub}>
+                                    <TextField type="text" id="search" name="search" className="searchs__input" value={search}
+                                        onChange={(e) => {setSearch(e.target.value)}} label="Pesquisar Repositório"
                                     />
-                                </g>
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-            </header>
+                                    <IconButton color="primary" aria-label="Pesquisar" size="small">
+                                        <Search fontSize="small" />
+                                    </IconButton>
+                                </form>
+                            </Grid>
+                        </Grid>
+                    </Container>
+                </header>
 
-            <main>
-                <div className="content">
-                    <div className="container">
-                        <div className="scrollable-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Nome</th>
-                                        <th>Data da Criação</th>
-                                        <th>Descrição</th>
-                                        <th>Linguagem</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        repos.map((repo: Repos) => {
-                                            return(
-                                                <tr key={repo.id}>
-                                                    <td>{repo.id}</td>
-                                                    <td>{repo.name}</td>
-                                                    <td>{format(new Date(repo.created_at), 'dd/MM/yyyy')}</td>
-                                                    <td>{repo.description}</td>
-                                                    <td>{repo.language}</td>
-                                                </tr>
-                                            );
-                                        })
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                <main>
+                    <div className="content">
+                        <Container className="container">
+                            <TableContainer component={Paper}>
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Id</TableCell>
+                                            <TableCell>Nome</TableCell>
+                                            <TableCell>Data da Criação</TableCell>
+                                            <TableCell>Descrição</TableCell>
+                                            <TableCell>Linguagem</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        { construirLista() }
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+
+                        </Container>
                     </div>
-                </div>
-            </main>
-            <footer>
-                <div className="container">
-                    &copy; Camila Kadi Garcia - Todos os direitos reservados - 2020
-                </div>
-            </footer>
+                </main>
+
+                <footer>
+                    <Container className="container">
+                        &copy; Camila Kadi Garcia - Todos os direitos reservados - 2020
+                    </Container>
+                </footer>
             </ThemeProvider>
         </div>
     )
