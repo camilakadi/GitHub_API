@@ -2,8 +2,21 @@ import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { format } from "date-fns";
+import { Button, TextField } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import './styles.css';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: "#003959",
+        },
+        // secondary: {
+        //     main: "",
+        // },
+    },
+});
 
 export interface Repos {
     id: number;
@@ -38,12 +51,13 @@ function Home() {
 
     return (
         <div className="wrapper">
+            <ThemeProvider theme={theme}>
             <header>
                 <div className="container top-container">
                     <div className="logo">GitHub Viewer</div>
                     <form className="searchs__form" onSubmit={pesquisarGitHub}>
-                        <input type="text" id="search" name="search" className="searchs__input" value={search}
-                            onChange={(e) => {setSearch(e.target.value)}} placeholder="Buscar Repositório"
+                        <TextField type="text" id="search" name="search" className="searchs__input" value={search}
+                            onChange={(e) => {setSearch(e.target.value)}} label="Pesquisar Repositório"
                         />
                         <button className="searchs__button">
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-1 0 136 136.21852">
@@ -97,6 +111,7 @@ function Home() {
                     &copy; Camila Kadi Garcia - Todos os direitos reservados - 2020
                 </div>
             </footer>
+            </ThemeProvider>
         </div>
     )
 }
