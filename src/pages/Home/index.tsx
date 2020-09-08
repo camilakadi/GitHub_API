@@ -92,7 +92,7 @@ function Home() {
                                     <TextField type="text" id="search" name="search" className="searchs__input" value={search}
                                         onChange={(e) => {setSearch(e.target.value)}} label="Pesquisar Repositório"
                                     />
-                                    <IconButton color="primary" aria-label="Pesquisar" size="small">
+                                    <IconButton color="primary" aria-label="Pesquisar" size="small" type="submit">
                                         <Search fontSize="small" />
                                     </IconButton>
                                 </form>
